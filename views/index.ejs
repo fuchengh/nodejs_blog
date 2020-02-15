@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+</head>
+
+<body>
+    <div style="float:left"><a href="/">Home</a></div>
+    <% if (username && authenticated) { %>
+    <div style="float:right"><a href="/users/logout" style="margin:10px">Log Out</a></div>
+    <div style="float:right"><a href="/users/add_article" style="margin:10px">Add article</a></div>
+    <div style="float:right"><a href="/users/profile" style="margin:10px">Profile</a></div>
+    <div style="float:right;margin-left:10px">Hello! <%= username%></div>
+    <% } else { %>
+    <div style="float:right"><a href="/users/login" style="margin:10px">Log In</a></div>
+    <div style="float:right"><a href="/users/register" style="margin:10px">Register</a></div>
+    <div style="float:right"><a href="/users/forget" style="margin:10px">Forgot Password</a></div>
+    <% } %>
+    <div style="padding:50px">
+        <h1><%= title %></h1>
+    </div>
+    <% for(article in blogs){ %>
+    <div style="margin:10px;float:left">Author: <%= blogs[article].Username %></div>
+    <div style="margin:10px;float:right"><%= blogs[article].CreatedAt %></div>
+    <br />
+    <div style="margin-top:50px;margin-left:50px;margin-bottom:50px;"><%= blogs[article].Article %></div>
+    <a href="/users/message/<%= blogs[article].id %>" style="float:right;margin-top:10px;">Leave a
+        message</a>
+    <hr style="margin-top:110px">
+    <% } %>
+</body>
+
+</html>

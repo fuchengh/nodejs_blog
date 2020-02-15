@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leave a Message</title>
+</head>
+
+<body>
+    <div style="float:left"><a href="/">Home</a></div>
+    <% if (username && authenticated) { %>
+    <div style="float:right"><a href="/users/profile" style="margin:10px">Profile</a></div>
+    <div style="float:right"><a href="/users/logout" style="margin:10px">Log Out</a></div>
+    <div style="float:right;margin-left:10px">Hello! <%= username%></div>
+    <% } else {%>
+    <div style="float:right"><a href="/users/register" style="margin:10px">Register</a></div>
+    <div style="float:right"><a href="/users/login" style="margin:10px">Log In</a></div>
+    <% } %>
+    <div style="padding:50px">
+        <h1>Leave a Message</h1>
+    </div>
+    <div style="margin:50px">
+        <form action="/apis/comment/<%= messageId %>" name="modify" method="post">
+            <div>
+                <span>Author: <%= blogs[0].Username%></span>
+            </div>
+            <p style="margin-left:25px;margin-top:25px;margin-bottom:50px;">
+                <%= blogs[0].Article %>
+            </p>
+            <hr />
+            <div style="margin-top:50px;">
+                <% for(comment in comments) { %>
+                <p>
+                    <div style="margin-left:50px">Visitor: <%= comments[comment].Visitor %></div>
+                    <div style="margin:50px">
+                        <%= comments[comment].Comment %></div>
+                    <div style="margin:10px;float:right"><%= comments[comment].CreatedAt %></div>
+                    <br />
+                    <br />
+                    <hr />
+                </p>
+                <% } %>
+            </div>
+            <span> Name: </span><input name="visitor" style="margin:10px;width:150"></span>
+            <br />
+            <textarea name="message" rows="10" cols="50" style="margin:25px;"></textarea>
+            <div>
+                <span style="padding:75px"><input type="submit" value="Save" name="submit"></span>
+            </div>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>

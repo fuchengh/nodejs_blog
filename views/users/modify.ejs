@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modify</title>
+</head>
+
+<body>
+    <div style="float:left"><a href="/">Home</a></div>
+    <% if (username && authenticated) { %>
+    <div style="float:right"><a href="/users/profile" style="margin:10px">Profile</a></div>
+    <div style="float:right"><a href="/users/logout" style="margin:10px">Log Out</a></div>
+    <div style="float:right;margin-left:10px">Hello! <%= username%></div>
+    <% } else {%>
+    <div style="float:right"><a href="/users/register" style="margin:10px">Register</a></div>
+    <div style="float:right"><a href="/users/login" style="margin:10px">Log In</a></div>
+    <% } %>
+    <div style="padding:50px">
+        <form action="/apis/update/<%= messageId %>" name="modify" method="post">
+            <h1>Update Article</h1>
+            <div>
+                <span>Writer:</span>
+                <label style="padding-right:50px"><%= username %></label>
+                <p>
+                    <textarea style="resize:none;margin:50px" name="Content" cols="100"
+                        rows="25"><%= blogs[0].Article %></textarea>
+                </p>
+                <div>
+                    <span style="padding:377px"><input type="submit" value="Save" name="submit"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

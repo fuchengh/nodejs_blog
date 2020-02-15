@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <div style="float:left"><a href="/">Home</a></div>
+    <div style="float:right"><a href="/users/forget" style="margin:10px">Forgot Password</a></div>
+    <div style="float:right"><a href="/users/register" style="margin:10px">Register</a></div>
+    <div style="padding:50px">
+        <h1>Login</h1>
+    </div>
+    <form action="/apis/login" method="post">
+        <p><label style="padding-right:50px">User name or email</label>
+            <input type="text" name="user" placeholder="username@example.com">
+
+        </p>
+        <p><label style="padding-right:123px">password</label>
+            <input type="password" name="passwd">
+        </p>
+        <p><span style="padding-left:130px"><input type="submit" name="submit" value="Log In"></span>
+            <a href="/users/forget" style="padding-left:50px">Forgot Password</a></p>
+    </form>
+</body>
+
+</html>

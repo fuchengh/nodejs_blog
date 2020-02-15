@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Article</title>
+</head>
+
+<body>
+    <div style="float:left"><a href="/">Home</a></div>
+    <% if (username && authenticated) { %>
+    <div style="float:right"><a href="/users/profile" style="margin:10px">Profile</a></div>
+    <div style="float:right"><a href="/users/logout" style="margin:10px">Log Out</a></div>
+    <div style="float:right;margin-left:10px">Hello! <%= username%></div>
+    <% } else {%>
+    <div style="float:right"><a href="/users/register" style="margin:10px">Register</a></div>
+    <div style="float:right"><a href="/users/login" style="margin:10px">Log In</a></div>
+    <% } %>
+    <div style="padding:50px">
+        <h1>Add Article</h1>
+    </div>
+    <div>
+        <form action="/apis/add" name="add" method="post">
+            <div>
+                <span style="margin-left:50px;">Writer:</span>
+                <label><%= username %></label>
+                <p>
+                    <textarea style="resize:none;margin:2%" name="Content" cols="100" rows="25"></textarea>
+                </p>
+                <div>
+                    <span style="margin:50px"><input type="submit" value="Save" name="submit"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
